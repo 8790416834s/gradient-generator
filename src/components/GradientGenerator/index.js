@@ -40,13 +40,12 @@ class GradientGenerator extends Component {
 
   onClickGenerate = () => {
     const {colorOne, colorTwo, activeDirection} = this.state
-    const gradient = `linear-gradient(to ${activeDirection}, ${colorOne}, ${colorTwo})`
+    const gradient = `to ${activeDirection}, ${colorOne}, ${colorTwo}`
     this.setState({gradient})
   }
 
   render() {
-    const {gradient, colorOne, colorTwo, activeDirection} = this.state
-    console.log(gradient)
+    const {gradient, colorOne, colorTwo} = this.state
     return (
       <MainContainer gradient={gradient} data-testid="gradientGenerator">
         <MainHeading>Generate a CSS Color Gradient</MainHeading>
@@ -57,7 +56,6 @@ class GradientGenerator extends Component {
               key={each.directionId}
               directionDetails={each}
               changeDirection={this.changeDirection}
-              activeDirectionId={activeDirection === each.value}
             />
           ))}
         </SelectDirection>

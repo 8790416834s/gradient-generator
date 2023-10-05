@@ -1,15 +1,16 @@
 import {ItemContainer, ButtonItem} from './styledComponents'
 
 const GradientDirectionItem = props => {
-  const {directionDetails, changeDirection, activeDirectionId} = props
+  const {directionDetails, changeDirection} = props
   const {value, displayText} = directionDetails
-  console.log(activeDirectionId)
+
   const onClickDirection = () => {
     changeDirection(value)
   }
+
   return (
     <ItemContainer>
-      <ButtonItem type="button" activeDirectionId onClick={onClickDirection}>
+      <ButtonItem type="button" onClick={onClickDirection}>
         {displayText}
       </ButtonItem>
     </ItemContainer>

@@ -5,9 +5,9 @@ export const ItemContainer = styled.li`
 `
 export const ButtonItem = styled.button`
   color: #334155;
-  opacity: ${props => (props.activeDirectionId ? 1 : 0.5)};
+  opacity: ${props => (props.activeDirectionId ? 0.5 : 1)};
   background-color: ${props =>
-    props.activeDirectionId ? '#ffffff' : '#ffffff78'};
+    props.activeDirectionId ? '#ffffff78' : '#ffffff'};
   border-width: 0px;
   border-radius: 5px;
   margin: 5px;
