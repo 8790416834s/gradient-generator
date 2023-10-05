@@ -19,7 +19,12 @@ const gradientDirectionsList = [
 ]
 // Write your code here
 class GradientGenerator extends Component {
-  state = {colorOne: `#8ae323`, colorTwo: `#014f7b`, activeDirection: 'top'}
+  state = {
+    gradient: '',
+    colorOne: `#8ae323`,
+    colorTwo: `#014f7b`,
+    activeDirection: 'top',
+  }
 
   onChangeColorOne = event => {
     this.setState({colorOne: event.target.value})
@@ -33,17 +38,17 @@ class GradientGenerator extends Component {
     this.setState({activeDirection: value})
   }
 
-  onClickGenerate = () => {}
+  onClickGenerate = () => {
+    const {colorOne, colorTwo, activeDirection} = this.state
+    const gradient = `linear-gradient(to ${activeDirection}, ${colorOne}, ${colorTwo})`
+    this.setState({gradient})
+  }
 
   render() {
-    const {colorOne, colorTwo, activeDirection} = this.state
+    const {gradient, colorOne, colorTwo, activeDirection} = this.state
+    console.log(gradient)
     return (
-      <MainContainer
-        color={colorOne}
-        bgColor={colorTwo}
-        direction={activeDirection}
-        data-testid="gradientGenerator"
-      >
+      <MainContainer gradient={gradient} data-testid="gradientGenerator">
         <MainHeading>Generate a CSS Color Gradient</MainHeading>
         <SubHeading>Choose Direction</SubHeading>
         <SelectDirection>
@@ -62,6 +67,7 @@ class GradientGenerator extends Component {
             <SubHeading>{colorOne}</SubHeading>
             <InputColor
               type="color"
+              id="colorOne"
               onChange={this.onChangeColorOne}
               value={colorOne}
             />
@@ -70,6 +76,7 @@ class GradientGenerator extends Component {
             <SubHeading>{colorTwo}</SubHeading>
             <InputColor
               type="color"
+              id="colorTwo"
               onChange={this.onChangeColorTwo}
               value={colorTwo}
             />

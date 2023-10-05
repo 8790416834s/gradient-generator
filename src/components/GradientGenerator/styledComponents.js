@@ -7,11 +7,7 @@ export const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 100px;
-  background-image: linear-gradient(
-    To ${props => props.direction},
-    ${props => props.color},
-    ${props => props.bgColor}
-  );
+  background-image: linear-gradient(${props => props.gradient});
   height: 100vh;
 `
 export const MainHeading = styled.h1`
